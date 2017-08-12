@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profiles',
-    'contact'
+    'contact',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,4 @@ if DEBUG:
     ]
 
 # TEMPLATE_DIRS =
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
