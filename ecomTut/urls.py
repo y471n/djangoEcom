@@ -20,10 +20,12 @@ from django.contrib import admin
 
 from profiles import views as profiles_views
 from contact import views as contact_views
+from landing import views as landing_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', profiles_views.home, name='home'),
+    url(r'^$', landing_view.main, name='main'),
+    url(r'^home/$', profiles_views.home, name='home'),
     url(r'^about/$', profiles_views.about, name='about'),
     url(r'^contact/$', contact_views.contact, name='contact'),
     url(r'^accounts/', include('allauth.urls')),

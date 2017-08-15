@@ -1,7 +1,12 @@
+from allauth.socialaccount.models import SocialAccount, SocialToken
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 
+@login_required
 def home(request):
+    social_account = SocialAccount.objects.filter(user=request.user)
+    token = SocialToken.objects.filter(account=social_account.first())
     context = {}
     template = 'home.html'
     return render(request, template, context=context)
