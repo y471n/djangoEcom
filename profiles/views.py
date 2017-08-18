@@ -5,9 +5,11 @@ from django.shortcuts import render
 
 @login_required
 def home(request):
-    social_account = SocialAccount.objects.filter(user=request.user)
-    token = SocialToken.objects.filter(account=social_account.first())
-    context = {}
+    social_account = SocialAccount.objects.filter(user=request.user).first()
+    print(social_account.uid)
+    token = SocialToken.objects.filter(account=social_account).first()
+
+    context = {'token': token.token}
     template = 'home.html'
     return render(request, template, context=context)
 
